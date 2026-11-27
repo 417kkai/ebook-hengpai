@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="在浏览器里把台湾繁体 EPUB 转成简体横排电子书，保留章节、目录和插图。">
+    <meta name="theme-color" content="#f7f5ef">
+    <link rel="icon" href="data:,">
+    <title>纸间 · EPUB 简体横排转换</title>
+  </head>
+  <body>
+    <div class="shell">
+      <header class="masthead">
+        <a class="brand" href="./" aria-label="纸间首页"><span class="paper-icon" aria-hidden="true"></span>纸间</a>
+        <a href="#instructions">使用说明</a>
+      </header>
+      <main>
+        <section class="intro" aria-labelledby="page-title">
+          <div class="intro-text">
+            <h1 id="page-title">把繁体电子书<br>转成简体横排</h1>
+          </div>
+          <div class="spread" role="group" aria-label="繁体竖排和简体横排对照">
+            <figure class="leaf leaf-traditional" aria-label="繁体竖排">
+              <p lang="zh-TW">讀書，使人心靜，也使人看見更大的世界。</p>
+            </figure>
+            <figure class="leaf leaf-simplified" aria-label="简体横排">
+              <p>读书，使人心静，也使人看见更大的世界。</p>
+            </figure>
+          </div>
+        </section>
+        <form class="converter" id="converter" aria-label="EPUB 转换工具">
+          <div class="source-panel">
+            <div class="dropzone" id="dropzone">
+              <span class="paper-icon file-icon" aria-hidden="true"><i></i></span>
+              <h2 id="source-title">拖入 EPUB 文件</h2>
+              <p class="file-size" id="file-size" hidden></p>
+              <div class="file-actions">
+                <input id="file-input" type="file" accept=".epub,application/epub+zip" hidden>
+                <button class="secondary" id="choose" type="button">选择文件</button>
+                <button class="text-button" id="demo" type="button">试用样书</button>
+              </div>
+              <p class="source-hint">支持可重排 EPUB · 最大 50 MB</p>
+            </div>
+          </div>
+          <div class="settings">
+            <fieldset>
+              <legend>转换选项</legend>
+              <label class="setting">保留直角引号<input type="checkbox" role="switch" id="keep-quotes"></label>
+              <label class="setting">使用大陆常用词<input type="checkbox" role="switch" id="mainland-terms"></label>
+            </fieldset>
+            <button id="convert" class="primary" type="submit" disabled>转换为简体横排</button>
+            <div class="result" id="result">
+              <p id="status" role="status" aria-live="polite"></p>
+              <progress id="progress" max="1" value="0" aria-label="转换进度" hidden></progress>
+              <ul id="warnings" hidden></ul>
+              <a id="download" class="download" href="#" hidden>下载简体 EPUB <span aria-hidden="true">↓</span></a>
+            </div>
+          </div>
+        </form>
+        <p class="privacy"><span class="lock-icon" aria-hidden="true"></span>文件在浏览器内处理，无需上传。</p>
+        <section class="instructions" id="instructions" aria-labelledby="instructions-title">
+          <h2 id="instructions-title">使用说明</h2>
+          <div>
+            <p>保留原书目录和插图，默认保留台式用词。固定版式及受保护的 EPUB 无法直接转换。</p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
